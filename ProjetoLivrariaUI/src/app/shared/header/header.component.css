@@ -1,0 +1,29 @@
+.header {
+  background: #ffffff;
+  color: #D95E28;
+  font-family: 'Press Start 2P';
+  font-size: 28px;
+  padding: 50px 30px;
+}
+
+span {
+  margin-left: 15px;
+}
+
+.links {
+  margin-left: auto;
+}
+
+a {
+  color: #D95E28;
+  font-size: 16px;
+  font-family: 'Press Start 2P';
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+a:hover{
+  opacity: 0.7;
+}
