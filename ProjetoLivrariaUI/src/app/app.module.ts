@@ -13,6 +13,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { LivrosComponent } from './livros/livros.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatButtonModule,
     HttpClientModule,
+    MatPaginatorModule,
+    FormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
