@@ -11,7 +11,7 @@ import { LivroService } from './livro.service';
 })
 export class LivrosComponent implements OnInit {
   livros: Livro[] = [];
-  displayedColumns: string[] = ['titulo', 'subtitulo', 'resumo','numeroDePaginas', 'dataDePublicacao','edicao','colecao','valor','autor','editora','genero'];
+  displayedColumns: string[] = ['titulo', 'subtitulo', 'resumo','numeroDePaginas', 'dataDePublicacao','edicao','colecao','valor','autor','editora','genero','editar'];
   dataSource: MatTableDataSource<Livro> = new MatTableDataSource<Livro>();
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
   filterString = '';
@@ -20,7 +20,7 @@ export class LivrosComponent implements OnInit {
 
   ngOnInit(): void {
       //buscar livros
-      this.livroService.getLivro()
+      this.livroService.getTodosLivros()
       .subscribe(
         (sucessResponse) => {
           this.livros = sucessResponse;

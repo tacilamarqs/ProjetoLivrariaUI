@@ -13,7 +13,12 @@ export class LivroService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getLivro(): Observable<Livro[]> {
+  getTodosLivros(): Observable<Livro[]> {
     return this.httpClient.get<Livro[]>(this.baseApiUrl + '/Livro');
   }
+
+  getLivro(livroId: string): Observable<Livro> {
+    return this.httpClient.get<Livro>(this.baseApiUrl + '/Livro/' + livroId);
+  }
+
 }
