@@ -1,0 +1,18 @@
+export interface updateLivroRequest {
+  titulo: string,
+  subtitulo: string,
+  resumo: string,
+  numeroDePaginas: number,
+  dataDePublicacao: string,
+  edicao: number,
+  colecao: string,
+  urlFotoCapa: string,
+  valor: number,
+  generoId: string,
+  nomeGenero: string,
+  descricao: string,
+  autorId: string,
+  autorNome: string,
+  editoraId: string,
+  editoraNome: string,
+}

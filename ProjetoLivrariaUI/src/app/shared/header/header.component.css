@@ -27,3 +27,8 @@ a {
 a:hover{
   opacity: 0.7;
 }
+
+.mat-icon {
+  vertical-align:sub;
+  margin-right: 5px;
+}

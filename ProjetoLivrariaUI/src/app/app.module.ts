@@ -15,6 +15,16 @@ import { LivrosComponent } from './livros/livros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
+import { ViewLivroComponent } from './pages/view-livro/view-livro.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { ApagarComponent } from './pages/apagar/apagar.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +32,10 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    LivrosComponent
+    LivrosComponent,
+    ViewLivroComponent,
+    CadastroComponent,
+    ApagarComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +47,13 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     HttpClientModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatSelectModule,
+    MatNativeDateModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

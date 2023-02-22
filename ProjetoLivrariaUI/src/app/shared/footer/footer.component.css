@@ -1,8 +1,10 @@
 .container {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Press Start 2P';
   background-color: #ffffff;
   color: #D95D27;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: row-reverse;
+  margin-right: 30px;
+  margin-top: 20px;
 }

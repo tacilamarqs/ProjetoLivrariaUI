@@ -1,0 +1,141 @@
+<div class="pagina">
+  <div class="page-header">
+    <div class="container">
+      <h1>Cadastro de livros</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <a routerLink="/livros" mat-stroked-button color="#D95E28">
+          <mat-icon>chevron_left</mat-icon>
+          Voltar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="formulario">
+    <form #livroDetalhes="ngForm">
+      <div class="col-xs-6">
+        <label>Título</label>
+        <input type="text" [(ngModel)]="livro.titulo" name="titulo" />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Subtítulo</label>
+        <input type="text" [(ngModel)]="livro.subtitulo" name="subtitulo" />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Resumo</label>
+        <textarea
+          matInput
+          [(ngModel)]="livro.resumo"
+          name="resumo"
+        ></textarea>
+      </div>
+
+      <div class="col-xs-6">
+        <label>Número de páginas</label>
+        <input
+          type="number"
+          max="10000"
+          matInput
+          [(ngModel)]="livro.numeroDePaginas"
+          name="numeroDePaginas"
+        />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Data de publicação</label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="livro.dataDePublicacao"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+
+      <div class="col-xs-6">
+        <label>Edição</label>
+        <input
+          type="number"
+          matInput
+          #edicao
+          maxlength="2"
+          [(ngModel)]="livro.dataDePublicacao"
+          name="dataDePublicacao"
+        />
+        <mat-hint align="end"
+          >{{ edicao.value.length }} de 2 caracteres</mat-hint
+        >
+      </div>
+
+      <div class="col-xs-6">
+        <label>Coleção</label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="livro.colecao"
+          name="colecao"
+        />
+      </div>
+
+      <div class="col-xs-6">
+        <label>URL da foto da capa do livro</label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="livro.urlFotoCapa"
+          name="urlFotoCapa"
+        />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Valor</label>
+        <input type="float" matInput [(ngModel)]="livro.valor" name="valor" />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Autor</label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="livro.autor.autorNome"
+          name="autorNome"
+        />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Editora</label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="livro.editora.editoraNome"
+          name="editoraNome"
+        />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Gênero do livro</label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="livro.genero.nomeGenero"
+          name="nomeGenero"
+        />
+      </div>
+
+      <a mat-stroked-button routerLink="" color="#D95E28" class="enviar">
+        <mat-icon>check_circle_outline</mat-icon>
+        enviar
+      </a>
+    </form>
+  </div>
+</div>
