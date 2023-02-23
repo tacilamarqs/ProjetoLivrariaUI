@@ -42,8 +42,15 @@ export class LivroService {
       editoraId: livroRequest.editora.editoraId,
       editoraNome: livroRequest.editora.editoraNome,
     }
-
     return this.httpClient.put<Livro>(this.baseApiUrl + '/Livro/' + livroId, updateLivroRequest);
+  }
 
+  addLivro(livroId: string, Adicionalivro: Livro): Observable<Livro> {
+    Adicionalivro.id = '00000000-0000-0000-0000-000000000000';
+    return this.httpClient.post<Livro>(this.baseApiUrl + '/Livro/' + livroId, Adicionalivro);
+  }
+
+  deletarLivro(livroId: string): Observable<Livro> {
+    return this.httpClient.delete<Livro>(this.baseApiUrl + '/Livro/' + livroId);
   }
 }

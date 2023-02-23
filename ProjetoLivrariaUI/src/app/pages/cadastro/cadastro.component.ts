@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LivroService } from 'src/app/livros/livro.service';
 import { Editora } from 'src/app/models/ui-models/editora.model';
 import { Autor } from 'src/app/models/ui-models/autor.model';
@@ -9,7 +9,6 @@ import { GeneroService } from 'src/app/services/genero.service';
 import { AutorService } from 'src/app/services/autor.service';
 import { EditoraService } from 'src/app/services/editora.service';
 
-
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -17,9 +16,10 @@ import { EditoraService } from 'src/app/services/editora.service';
 })
 export class CadastroComponent implements OnInit {
 
+
   livroId: string | null | undefined;
 
-  livro: Livro = {
+  adicionalivro: Livro = {
     id: '',
     titulo: '',
     subtitulo: '',
@@ -51,14 +51,15 @@ export class CadastroComponent implements OnInit {
   generoLista: Genero[] = [];
   editoraLista: Editora[] = [];
   autorLista: Autor[] = [];
-autorNome: any;
-autor: any;
+  autorNome: any;
+  autor: any;
 
   constructor(private readonly livroService: LivroService,
     private readonly route: ActivatedRoute,
     private readonly generoService: GeneroService,
     private readonly autorService: AutorService,
-    private readonly editoraService: EditoraService) { }
+    private readonly editoraService: EditoraService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
@@ -69,7 +70,7 @@ autor: any;
           this.livroService.getLivro(this.livroId)
           .subscribe(
             (successResponse) => {
-              this.livro = successResponse;
+              this.adicionalivro = successResponse;
             }
           );
         }
@@ -98,4 +99,13 @@ autor: any;
     );
   }
 
+  addLivro() {
+   this.livroService.addLivro(this.adicionalivro.id, this.adicionalivro)
+    .subscribe({
+      next: (livro) => {
+        this.router.navigate(['livro/:id']);
+      }
+
+    });
+  }
 }

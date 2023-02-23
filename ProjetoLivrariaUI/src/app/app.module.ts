@@ -24,6 +24,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { ApagarComponent } from './pages/apagar/apagar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -33,9 +34,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     HeaderComponent,
     FooterComponent,
     LivrosComponent,
-    ViewLivroComponent,
     CadastroComponent,
     ApagarComponent,
+    ViewLivroComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +55,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatSelectModule,
     MatNativeDateModule,
+    MatSnackBarModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

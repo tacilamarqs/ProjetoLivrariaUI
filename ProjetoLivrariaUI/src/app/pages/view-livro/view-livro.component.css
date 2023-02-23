@@ -46,7 +46,7 @@ label {
   margin-bottom: 30px;
 }
 
-input, textarea {
+input, textarea, mat-datepicker-toggle {
   font-family: 'Poppins', sans-serif;
   width: 80%;
   font-size: 25px;

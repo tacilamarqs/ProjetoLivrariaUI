@@ -11,8 +11,8 @@ const routes: Routes = [
   { path : "**", redirectTo: "LivrosComponent", pathMatch: "full" },
   { path: "livro", component: LivrosComponent},
   { path: "livro/:id", component: ViewLivroComponent},
-  { path: "livro-cadastro", component: CadastroComponent},
-  { path: "livro-apagar", component: ApagarComponent}
+  { path: "cadastro", component: CadastroComponent},
+  { path: "livro/:id", component: ApagarComponent}
 ];
 
 @NgModule({

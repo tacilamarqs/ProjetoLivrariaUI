@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <a routerLink="/livros" mat-stroked-button color="#D95E28">
+        <a routerLink="/livro" mat-stroked-button color="#D95E28">
           <mat-icon>chevron_left</mat-icon>
           Voltar
         </a>
@@ -20,19 +20,19 @@
     <form #livroDetalhes="ngForm">
       <div class="col-xs-6">
         <label>Título</label>
-        <input type="text" [(ngModel)]="livro.titulo" name="titulo" />
+        <input type="text" [(ngModel)]="adicionalivro.titulo" name="titulo" />
       </div>
 
       <div class="col-xs-6">
         <label>Subtítulo</label>
-        <input type="text" [(ngModel)]="livro.subtitulo" name="subtitulo" />
+        <input type="text" [(ngModel)]="adicionalivro.subtitulo" name="subtitulo" />
       </div>
 
       <div class="col-xs-6">
         <label>Resumo</label>
         <textarea
           matInput
-          [(ngModel)]="livro.resumo"
+          [(ngModel)]="adicionalivro.resumo"
           name="resumo"
         ></textarea>
       </div>
@@ -43,7 +43,7 @@
           type="number"
           max="10000"
           matInput
-          [(ngModel)]="livro.numeroDePaginas"
+          [(ngModel)]="adicionalivro.numeroDePaginas"
           name="numeroDePaginas"
         />
       </div>
@@ -53,8 +53,8 @@
         <input
           matInput
           [matDatepicker]="picker"
-          [(ngModel)]="livro.dataDePublicacao"
-        />
+          [(ngModel)]="adicionalivro.dataDePublicacao"
+          name="dataDePublicacao"/>
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
@@ -69,8 +69,8 @@
           matInput
           #edicao
           maxlength="2"
-          [(ngModel)]="livro.dataDePublicacao"
-          name="dataDePublicacao"
+          [(ngModel)]="adicionalivro.edicao"
+          name="edicao"
         />
         <mat-hint align="end"
           >{{ edicao.value.length }} de 2 caracteres</mat-hint
@@ -82,7 +82,7 @@
         <input
           type="text"
           matInput
-          [(ngModel)]="livro.colecao"
+          [(ngModel)]="adicionalivro.colecao"
           name="colecao"
         />
       </div>
@@ -92,14 +92,14 @@
         <input
           type="text"
           matInput
-          [(ngModel)]="livro.urlFotoCapa"
+          [(ngModel)]="adicionalivro.urlFotoCapa"
           name="urlFotoCapa"
         />
       </div>
 
       <div class="col-xs-6">
         <label>Valor</label>
-        <input type="float" matInput [(ngModel)]="livro.valor" name="valor" />
+        <input type="float" matInput [(ngModel)]="adicionalivro.valor" name="valor" />
       </div>
 
       <div class="col-xs-6">
@@ -107,7 +107,7 @@
         <input
           type="text"
           matInput
-          [(ngModel)]="livro.autor.autorNome"
+          [(ngModel)]="adicionalivro.autor.autorNome"
           name="autorNome"
         />
       </div>
@@ -117,7 +117,7 @@
         <input
           type="text"
           matInput
-          [(ngModel)]="livro.editora.editoraNome"
+          [(ngModel)]="adicionalivro.editora.editoraNome"
           name="editoraNome"
         />
       </div>
@@ -127,12 +127,17 @@
         <input
           type="text"
           matInput
-          [(ngModel)]="livro.genero.nomeGenero"
+          [(ngModel)]="adicionalivro.genero.nomeGenero"
           name="nomeGenero"
         />
       </div>
 
-      <a mat-stroked-button routerLink="" color="#D95E28" class="enviar">
+      <div class="col-xs-6">
+        <label>Descrição do gênero</label>
+        <input type="text" matInput [(ngModel)]="adicionalivro.genero.descricao" name="descricao"/>
+      </div>
+
+      <a mat-stroked-button routerLink="/livro" color="#D95E28" class="enviar" (click)="addLivro()">
         <mat-icon>check_circle_outline</mat-icon>
         enviar
       </a>

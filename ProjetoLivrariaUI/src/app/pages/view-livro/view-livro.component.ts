@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Autor } from 'src/app/models/ui-models/autor.model';
 import { Editora } from 'src/app/models/ui-models/editora.model';
 import { Genero } from 'src/app/models/ui-models/genero.model';
@@ -51,11 +53,15 @@ export class ViewLivroComponent implements OnInit {
   listaEditora: Editora[] = [];
   listaAutor: Autor[] = [];
 
+  @ViewChild('livroForm') livroForm?: NgForm;
+
   constructor(private readonly livroService: LivroService,
     private readonly route: ActivatedRoute,
     private readonly generoService: GeneroService,
     private readonly editoraService: EditoraService,
     private readonly autorSerice: AutorService,
+    private snackbar: MatSnackBar,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -99,12 +105,38 @@ export class ViewLivroComponent implements OnInit {
 
   onUpdate(): void {
     this.livroService.updateLivro(this.livro.id, this.livro)
-    .subscribe (
-      (sucessResponse) => {
-        console.log(sucessResponse)
-
+      .subscribe({
+        next: (successResponse) => {
+          console.log(successResponse)
+          this.snackbar.open('O livro foi atualizado!', undefined, {
+            duration:2000
+          });
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+        }
       }
-    );
+      )
+  }
 
+  onDelete(): void {
+    this.livroService.deletarLivro(this.livro.id)
+      .subscribe({
+        next: (successResponse) => {
+          console.log(successResponse);
+          this.snackbar.open('O livro foi excluído!', undefined, {
+            duration:2000
+          });
+
+          setTimeout(() => {
+            this.router.navigateByUrl('livro');
+          }, 2000);
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+        }
+      });
   }
 }
+
+
