@@ -83,14 +83,8 @@
         </div>
 
         <div class="col-xs-6">
-          <mat-form-field appearance="fill">
-            <label>Autor</label>
-            <mat-select [(ngModel)]="livro.autor.autorId" name="autorId">
-              <mat-option *ngFor="let autorId of listaAutor" [value]="autorId">
-                {{ livro.autor.autorNome }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+          <label>Autor</label>
+          <input type="text" matInput [(ngModel)]="livro.autor.autorNome" name="autorNome"/>
         </div>
 
 
