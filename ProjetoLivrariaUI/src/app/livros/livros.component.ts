@@ -11,7 +11,7 @@ import { LivroService } from './livro.service';
 })
 export class LivrosComponent implements OnInit {
   livros: Livro[] = [];
-  displayedColumns: string[] = ['titulo', 'subtitulo', 'resumo','numeroDePaginas', 'dataDePublicacao','edicao','colecao','valor','autor','editora','genero','editar'];
+  displayedColumns: string[] = ['titulo', 'subtitulo', 'resumo','numeroDePaginas', 'dataDePublicacao','edicao','colecao','valor','autor','editora','genero','editar','excluir'];
   dataSource: MatTableDataSource<Livro> = new MatTableDataSource<Livro>();
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
   filterString = '';

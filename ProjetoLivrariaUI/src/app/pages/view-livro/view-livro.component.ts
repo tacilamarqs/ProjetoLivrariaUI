@@ -3,12 +3,8 @@ import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Autor } from 'src/app/models/ui-models/autor.model';
-import { Editora } from 'src/app/models/ui-models/editora.model';
-import { Genero } from 'src/app/models/ui-models/genero.model';
 import { Livro } from 'src/app/models/ui-models/livro.model';
 import { AutorService } from 'src/app/services/autor.service';
-import { EditoraService } from 'src/app/services/editora.service';
-import { GeneroService } from 'src/app/services/genero.service';
 import { LivroService } from '../../livros/livro.service';
 
 @Component({
@@ -27,6 +23,8 @@ export class ViewLivroComponent implements OnInit {
     resumo: '',
     numeroDePaginas: 0,
     dataDePublicacao: '',
+    editora: '',
+    genero: '',
     edicao: 0,
     colecao: '',
     urlFotoCapa: '',
@@ -35,30 +33,16 @@ export class ViewLivroComponent implements OnInit {
       autorId: '',
       autorNome: ''
     },
-    editora: {
-      editoraId: '',
-      editoraNome: ''
-    },
-    genero: {
-      generoId: '',
-      nomeGenero: '',
-      descricao: ''
-    },
-    generoId: '',
     autorId: '',
-    editoraId: ''
   }
 
-  listaGenero: Genero[] = [];
-  listaEditora: Editora[] = [];
+
   listaAutor: Autor[] = [];
 
   @ViewChild('livroForm') livroForm?: NgForm;
 
   constructor(private readonly livroService: LivroService,
     private readonly route: ActivatedRoute,
-    private readonly generoService: GeneroService,
-    private readonly editoraService: EditoraService,
     private readonly autorSerice: AutorService,
     private snackbar: MatSnackBar,
     private router: Router
@@ -74,20 +58,6 @@ export class ViewLivroComponent implements OnInit {
           .subscribe(
             (successResponse) => {
               this.livro = successResponse;
-            }
-          );
-
-          this.generoService.getListaGeneros()
-          .subscribe (
-            (successResponse) => {
-              this.listaGenero = successResponse;
-            }
-          );
-
-          this.editoraService.getListaEditoras()
-          .subscribe (
-            (successResponse) => {
-              this.listaEditora = successResponse;
             }
           );
 

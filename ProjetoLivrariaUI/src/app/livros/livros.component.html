@@ -11,8 +11,7 @@
       <div class="col-xs-12">
         <input type="text" class="input-busca" placeholder="Buscar livros"
         [(ngModel)]="filterString"
-        (keyup)="filtrarLivros()"
-        >
+        (keyup)="filtrarLivros()">
       </div>
     </div>
 
@@ -52,6 +51,18 @@
           <td mat-cell *matCellDef="let element"> {{element.dataDePublicacao}} </td>
         </ng-container>
 
+         <!-- Editora Column -->
+         <ng-container matColumnDef="editora">
+          <th mat-header-cell *matHeaderCellDef> Editora </th>
+          <td mat-cell *matCellDef="let element"> {{element.editora}} </td>
+        </ng-container>
+
+        <!-- Genero Column -->
+        <ng-container matColumnDef="genero">
+          <th mat-header-cell *matHeaderCellDef> Gênero </th>
+          <td mat-cell *matCellDef="let element"> {{element.genero}} </td>
+        </ng-container>
+
         <!-- Edição Column -->
         <ng-container matColumnDef="edicao">
           <th mat-header-cell *matHeaderCellDef> Edição </th>
@@ -76,27 +87,28 @@
           <td mat-cell *matCellDef="let element"> {{element.autor.autorNome}} </td>
         </ng-container>
 
-        <!-- Editora Column -->
-        <ng-container matColumnDef="editora">
-          <th mat-header-cell *matHeaderCellDef> Editora </th>
-          <td mat-cell *matCellDef="let element"> {{element.editora.editoraNome}} </td>
-        </ng-container>
-
-        <!-- Genero Column -->
-        <ng-container matColumnDef="genero">
-          <th mat-header-cell *matHeaderCellDef> Gênero </th>
-          <td mat-cell *matCellDef="let element"> {{element.genero.generoNome}} </td>
-        </ng-container>
 
         <!-- Editar Column -->
         <ng-container matColumnDef="editar">
-          <th mat-header-cell *matHeaderCellDef>  </th>
+          <th mat-header-cell *matHeaderCellDef> Editar </th>
           <td mat-cell *matCellDef="let element">
             <a [routerLink]="['/livro/', element.id]">
               <mat-icon color="#D95E28">edit</mat-icon>
             </a>
           </td>
         </ng-container>
+
+        <!-- Excluir Column -->
+        <ng-container matColumnDef="excluir">
+          <th mat-header-cell *matHeaderCellDef> Excluir </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/livro/', element.id]">
+              <mat-icon color="#D95E28">delete</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

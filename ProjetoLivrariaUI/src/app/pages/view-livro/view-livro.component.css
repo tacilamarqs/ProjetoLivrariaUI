@@ -46,7 +46,7 @@ label {
   margin-bottom: 30px;
 }
 
-input, textarea, mat-datepicker-toggle {
+input, textarea, mat-datepicker-toggle, mat-form-field {
   font-family: 'Poppins', sans-serif;
   width: 80%;
   font-size: 25px;
@@ -67,8 +67,3 @@ mat-hint {
   margin-left: 45px;
   color: #D95E28;
 }
-
-.enviar {
-  margin-bottom: 30px;
-}
-

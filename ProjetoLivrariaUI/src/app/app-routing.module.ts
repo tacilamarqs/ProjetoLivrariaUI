@@ -11,7 +11,7 @@ const routes: Routes = [
   { path : "**", redirectTo: "LivrosComponent", pathMatch: "full" },
   { path: "livro", component: LivrosComponent},
   { path: "livro/:id", component: ViewLivroComponent},
-  { path: "cadastro", component: CadastroComponent},
+  { path: "criar", component: CadastroComponent},
   { path: "livro/:id", component: ApagarComponent}
 ];
 

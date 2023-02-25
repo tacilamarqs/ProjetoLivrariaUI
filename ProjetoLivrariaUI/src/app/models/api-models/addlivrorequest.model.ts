@@ -1,7 +1,4 @@
-import { Autor } from "../api-models/autor.model";
-
-export interface Livro {
-  id: string,
+export interface AddLivroRequest {
   titulo: string,
   subtitulo: string,
   resumo: string,
@@ -13,6 +10,6 @@ export interface Livro {
   colecao: string,
   urlFotoCapa: string,
   valor: number,
-  autor: Autor,
   autorId: string,
+  autorNome: string,
 }

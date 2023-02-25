@@ -8,9 +8,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <a routerLink="/livro" mat-stroked-button color="#D95E28">
+        <a mat-stroked-button routerLink="/Livro" color="#D95E28">
           <mat-icon>chevron_left</mat-icon>
           Voltar
+        </a>
+        <a mat-stroked-button routerLink="" color="#D95E28" class="enviar" (click)="onDelete()">
+          <mat-icon>clear</mat-icon>
+          Deletar
         </a>
       </div>
     </div>
@@ -48,6 +52,16 @@
         </div>
 
         <div class="col-xs-6">
+          <label>Editora</label>
+          <input type="text" matInput [(ngModel)]="livro.editora" name="editoraNome"/>
+        </div>
+
+        <div class="col-xs-6">
+          <label>Gênero do livro</label>
+          <input type="text" matInput [(ngModel)]="livro.genero" name="nomeGenero"/>
+        </div>
+
+        <div class="col-xs-6">
             <label>Edição</label>
             <input type="number" matInput #edicao maxlength="2" [(ngModel)]="livro.edicao" name="edicao"/>
             <mat-hint align="end">{{edicao.value.length}} de 2 caracteres</mat-hint>
@@ -69,35 +83,22 @@
         </div>
 
         <div class="col-xs-6">
-          <label>Autor</label>
-          <input type="text" matInput [(ngModel)]="livro.autor.autorNome" name="autorNome"/>
-        </div>
-
-        <div class="col-xs-6">
-          <label>Editora</label>
-          <input type="text" matInput [(ngModel)]="livro.editora.editoraNome" name="editoraNome"/>
-        </div>
-
-        <div class="col-xs-6">
-          <label>Gênero do livro</label>
-          <input type="text" matInput [(ngModel)]="livro.genero.nomeGenero" name="nomeGenero"/>
-        </div>
-
-        <div class="col-xs-6">
-          <label>Descrição do gênero</label>
-          <input type="text" matInput [(ngModel)]="livro.genero.descricao" name="descricao"/>
+          <mat-form-field appearance="fill">
+            <label>Autor</label>
+            <mat-select [(ngModel)]="livro.autor.autorId" name="autorId">
+              <mat-option *ngFor="let autorId of listaAutor" [value]="autorId">
+                {{ livro.autor.autorNome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
 
         <div class="col-xs-12">
           <div class="row between-xs">
-            <a mat-stroked-button routerLink="/livro" color="#D95E28" class="enviar" (click)="onUpdate()">
+            <a mat-stroked-button routerLink="/Livro" color="#D95E28" class="enviar" (click)="onUpdate()">
               <mat-icon>check_circle_outline</mat-icon>
               enviar
-            </a>
-            <a mat-stroked-button routerLink="" color="#D95E28" class="enviar" (click)="onDelete()">
-              <mat-icon>clear</mat-icon>
-              Deletar
             </a>
           </div>
         </div>

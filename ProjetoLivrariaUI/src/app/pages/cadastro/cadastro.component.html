@@ -62,6 +62,27 @@
         <mat-datepicker #picker></mat-datepicker>
       </div>
 
+
+      <div class="col-xs-6">
+        <label>Editora</label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="adicionalivro.editora"
+          name="editoraNome"
+        />
+      </div>
+
+      <div class="col-xs-6">
+        <label>Gênero do livro</label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="adicionalivro.genero"
+          name="nomeGenero"
+        />
+      </div>
+
       <div class="col-xs-6">
         <label>Edição</label>
         <input
@@ -110,31 +131,6 @@
           [(ngModel)]="adicionalivro.autor.autorNome"
           name="autorNome"
         />
-      </div>
-
-      <div class="col-xs-6">
-        <label>Editora</label>
-        <input
-          type="text"
-          matInput
-          [(ngModel)]="adicionalivro.editora.editoraNome"
-          name="editoraNome"
-        />
-      </div>
-
-      <div class="col-xs-6">
-        <label>Gênero do livro</label>
-        <input
-          type="text"
-          matInput
-          [(ngModel)]="adicionalivro.genero.nomeGenero"
-          name="nomeGenero"
-        />
-      </div>
-
-      <div class="col-xs-6">
-        <label>Descrição do gênero</label>
-        <input type="text" matInput [(ngModel)]="adicionalivro.genero.descricao" name="descricao"/>
       </div>
 
       <a mat-stroked-button routerLink="/livro" color="#D95E28" class="enviar" (click)="addLivro()">

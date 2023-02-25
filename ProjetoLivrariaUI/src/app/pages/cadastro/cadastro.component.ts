@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LivroService } from 'src/app/livros/livro.service';
-import { Editora } from 'src/app/models/ui-models/editora.model';
 import { Autor } from 'src/app/models/ui-models/autor.model';
-import { Genero } from 'src/app/models/ui-models/genero.model';
 import { Livro } from 'src/app/models/ui-models/livro.model';
-import { GeneroService } from 'src/app/services/genero.service';
 import { AutorService } from 'src/app/services/autor.service';
-import { EditoraService } from 'src/app/services/editora.service';
+import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro',
@@ -26,6 +25,8 @@ export class CadastroComponent implements OnInit {
     resumo: '',
     numeroDePaginas: 0,
     dataDePublicacao: '',
+    editora: '',
+    genero: '',
     edicao: 0,
     colecao: '',
     urlFotoCapa: '',
@@ -34,32 +35,20 @@ export class CadastroComponent implements OnInit {
       autorId: '',
       autorNome: ''
     },
-    editora: {
-      editoraId: '',
-      editoraNome: ''
-    },
-    genero: {
-      generoId: '',
-      nomeGenero: '',
-      descricao: ''
-    },
-    generoId: '',
     autorId: '',
-    editoraId: ''
   }
 
-  generoLista: Genero[] = [];
-  editoraLista: Editora[] = [];
+  @ViewChild('livroForm') livroForm?: NgForm;
+
   autorLista: Autor[] = [];
   autorNome: any;
   autor: any;
 
   constructor(private readonly livroService: LivroService,
     private readonly route: ActivatedRoute,
-    private readonly generoService: GeneroService,
     private readonly autorService: AutorService,
-    private readonly editoraService: EditoraService,
-    private router: Router) { }
+    private router: Router,
+    private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
@@ -67,6 +56,7 @@ export class CadastroComponent implements OnInit {
         this.livroId = params.get('id');
 
         if(this.livroId) {
+
           this.livroService.getLivro(this.livroId)
           .subscribe(
             (successResponse) => {
@@ -75,13 +65,6 @@ export class CadastroComponent implements OnInit {
           );
         }
 
-        this.generoService.getListaGeneros()
-          .subscribe(
-            (sucessResponse) => {
-              this.generoLista = sucessResponse;
-            }
-          );
-
           this.autorService.getListaAutores()
           .subscribe(
             (sucessResponse) => {
@@ -89,23 +72,22 @@ export class CadastroComponent implements OnInit {
             }
           );
 
-          this.editoraService.getListaEditoras()
-          .subscribe(
-            (sucessResponse) => {
-              this.editoraLista = sucessResponse;
-            }
-          );
       }
     );
   }
 
   addLivro() {
-   this.livroService.addLivro(this.adicionalivro.id, this.adicionalivro)
-    .subscribe({
-      next: (livro) => {
-        this.router.navigate(['livro/:id']);
-      }
-
-    });
+      this.livroService.addLivro(this.adicionalivro)
+      .subscribe({
+        next: (livro) => {
+          console.log(this.adicionalivro)
+          this.router.navigateByUrl('livro/:id');
+        },
+        error: (HttpErrorResponse) => {
+          console.log(HttpErrorResponse)
+          console.log('Erro adicionando o livro: '+ this.adicionalivro)
+        }
+      });
   }
 }
+

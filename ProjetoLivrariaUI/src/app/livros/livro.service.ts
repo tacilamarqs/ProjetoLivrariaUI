@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Livro } from '../models/api-models/livro.model';
 import { updateLivroRequest } from '../models/api-models/updatelivrorequest.model'
+import { AddLivroRequest } from '../models/api-models/addlivrorequest.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,34 +24,14 @@ export class LivroService {
   }
 
   updateLivro(livroId: string, livroRequest: Livro): Observable<Livro> {
-
-    const updateLivroRequest: updateLivroRequest = {
-      titulo: livroRequest.titulo,
-      subtitulo: livroRequest.subtitulo,
-      resumo: livroRequest.resumo,
-      numeroDePaginas: livroRequest.numeroDePaginas,
-      dataDePublicacao: livroRequest.dataDePublicacao,
-      edicao: livroRequest.edicao,
-      colecao: livroRequest.colecao,
-      urlFotoCapa: livroRequest.urlFotoCapa,
-      valor: livroRequest.valor,
-      generoId: livroRequest.genero.generoId,
-      nomeGenero: livroRequest.genero.nomeGenero,
-      descricao: livroRequest.genero.descricao,
-      autorId: livroRequest.autor.autorId,
-      autorNome: livroRequest.autor.autorNome,
-      editoraId: livroRequest.editora.editoraId,
-      editoraNome: livroRequest.editora.editoraNome,
-    }
-    return this.httpClient.put<Livro>(this.baseApiUrl + '/Livro/' + livroId, updateLivroRequest);
+    return this.httpClient.put<Livro>(this.baseApiUrl + '/editar/' + livroId, livroRequest);
   }
 
-  addLivro(livroId: string, Adicionalivro: Livro): Observable<Livro> {
-    Adicionalivro.id = '00000000-0000-0000-0000-000000000000';
-    return this.httpClient.post<Livro>(this.baseApiUrl + '/Livro/' + livroId, Adicionalivro);
+  addLivro(livroRequest: Livro): Observable<Livro> {
+    return this.httpClient.post<Livro>(this.baseApiUrl + '/criar', livroRequest);
   }
 
   deletarLivro(livroId: string): Observable<Livro> {
-    return this.httpClient.delete<Livro>(this.baseApiUrl + '/Livro/' + livroId);
+    return this.httpClient.delete<Livro>(this.baseApiUrl + '/deletar/' + livroId);
   }
 }
