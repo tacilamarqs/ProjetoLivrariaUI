@@ -8,7 +8,6 @@ export interface updateLivroRequest {
   genero: string,
   edicao: number,
   colecao: string,
-  urlFotoCapa: string,
   valor: number,
   autorId: string,
   autorNome: string,

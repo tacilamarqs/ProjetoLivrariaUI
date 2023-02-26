@@ -29,7 +29,6 @@ export class ViewLivroComponent implements OnInit {
     genero: '',
     edicao: 0,
     colecao: '',
-    urlFotoCapa: '',
     valor: 0,
     autorNome: null,
     autorId: null,
@@ -38,7 +37,7 @@ export class ViewLivroComponent implements OnInit {
 
   listaAutor: Autor[] = [];
 
-  @ViewChild('livroForm') livroForm?: NgForm;
+  @ViewChild('livroDetalhes') livroDetalhes?: NgForm;
 
   constructor(private readonly livroService: LivroService,
     private readonly route: ActivatedRoute,
@@ -73,7 +72,8 @@ export class ViewLivroComponent implements OnInit {
   }
 
   onUpdate(): void {
-    this.livroService.updateLivro(this.livro.id, this.livro)
+    if(this.livroDetalhes?.form.valid) {
+      this.livroService.updateLivro(this.livro.id, this.livro)
       .subscribe({
         next: (successResponse) => {
           console.log(successResponse)
@@ -84,8 +84,8 @@ export class ViewLivroComponent implements OnInit {
         error: (errorResponse) => {
           console.log(errorResponse);
         }
-      }
-      )
+      })
+    }
   }
 
   onDelete(): void {

@@ -12,7 +12,6 @@ export interface Livro {
   genero: string,
   edicao: number,
   colecao: string,
-  urlFotoCapa: string,
   valor: number,
   autorNome: string | null,
   autorId?: string | null,

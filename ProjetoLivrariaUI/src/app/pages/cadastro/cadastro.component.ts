@@ -29,17 +29,14 @@ export class CadastroComponent implements OnInit {
     genero: '',
     edicao: 0,
     colecao: '',
-    urlFotoCapa: '',
     valor: 0,
     autorNome: null,
     autorId: null,
   }
 
-  @ViewChild('livroForm') livroForm?: NgForm;
+  @ViewChild('livroDetalhes') livroDetalhes?: NgForm;
 
   autorLista: Autor[] = [];
-  autorNome: any;
-  autor: any;
 
   constructor(private readonly livroService: LivroService,
     private readonly route: ActivatedRoute,
@@ -74,6 +71,8 @@ export class CadastroComponent implements OnInit {
   }
 
   addLivro() {
+
+    if(this.livroDetalhes?.form.valid) {
       this.livroService.addLivro(this.adicionalivro)
       .subscribe({
         next: (livro) => {
@@ -85,9 +84,10 @@ export class CadastroComponent implements OnInit {
         },
         error: (errorResponse) => {
           console.log(errorResponse)
-          console.log('Erro adicionando o livro: '+ this.adicionalivro)
+          console.log('Erro adicionando o livro: ' + this.adicionalivro)
         }
       });
+    }
   }
-}
 
+}
