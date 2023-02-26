@@ -10,5 +10,6 @@ export interface updateLivroRequest {
   colecao: string,
   urlFotoCapa: string,
   valor: number,
+  autorId: string,
   autorNome: string,
 }

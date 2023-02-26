@@ -31,11 +31,8 @@ export class ViewLivroComponent implements OnInit {
     colecao: '',
     urlFotoCapa: '',
     valor: 0,
-    autor: {
-      autorId: '',
-      autorNome: ''
-    },
-    autorId: '',
+    autorNome: null,
+    autorId: null,
   }
 
 

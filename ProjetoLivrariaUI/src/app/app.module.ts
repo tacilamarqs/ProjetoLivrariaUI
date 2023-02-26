@@ -21,7 +21,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { ApagarComponent } from './pages/apagar/apagar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -35,7 +34,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FooterComponent,
     LivrosComponent,
     CadastroComponent,
-    ApagarComponent,
     ViewLivroComponent,
   ],
   imports: [

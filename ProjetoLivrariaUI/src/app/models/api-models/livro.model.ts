@@ -14,6 +14,6 @@ export interface Livro {
   colecao: string,
   urlFotoCapa: string,
   valor: number,
-  autor: Autor,
-  autorId: string,
+  autorNome: string | null,
+  autorId?: string | null,
 }
